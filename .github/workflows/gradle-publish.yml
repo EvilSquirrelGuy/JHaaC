@@ -8,8 +8,10 @@
 name: Gradle Package
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - "v*" # version releases
+  workflow_dispatch: 
 
 jobs:
   build:
