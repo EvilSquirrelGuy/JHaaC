@@ -33,18 +33,6 @@ public class ConfigFile {
     return config;
   }
 
-  public ConfigEntry getEntry(String path) {
-    String[] pathElements = path.split("\\.");
-
-    ConfigGroup grp = this.config;
-
-    for (int i = 0; i < pathElements.length - 1; i++) {
-      grp = config.getGroup(pathElements[i]);
-      if (grp == null) return null;
-    }
-    return grp.getEntry(pathElements[pathElements.length - 1]);
-  }
-
   public String toHtml() {
     return document.outerHtml();
   }

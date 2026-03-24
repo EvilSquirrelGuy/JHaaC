@@ -34,4 +34,16 @@ public class ConfigGroup {
     });
   }
 
+  public ConfigEntry getEntryAtPath(String path) {
+    String[] pathElements = path.split("\\.");
+
+    ConfigGroup grp = this;
+
+    for (int i = 0; i < pathElements.length - 1; i++) {
+      grp = getGroup(pathElements[i]);
+      if (grp == null) return null;
+    }
+    return grp.getEntry(pathElements[pathElements.length - 1]);
+  }
+
 }
