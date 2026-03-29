@@ -13,17 +13,21 @@ Since this library is written to use Gradle Kotlin DSL, we'll assume you're usin
 
 Add this to the `repositories` section of your `build.gradle.kts`.
 ```kts
-maven {
-        name = "JHaaC"
-        url = uri("https://maven.pkg.github.com/EvilSquirrelGuy/JHaaC")
-        credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("GPR_USER")
-            password = project.findProperty("gpr.token") as String? ?: System.getenv("GPR_TOKEN")
-        }
+    maven {
+        name = "jitpack"
+        url = uri("https://jitpack.io/")
     }
 ```
 
-And make sure that you have `gpr.user` and `gpr.token` set somewhere (ideally in `$HOME/.gradle/gradle.properties`).
+Then, define the dependency like so:
+
+```kts
+  implementation("com.github.EvilSquirrelGuy:JHaaC:VERSION")
+```
+
+If there's a new version, you will probably need to wait for jitpack to build it, but you builds will succeed once this is done!
+Also, make sure to replace `VERSION` with the actual version, anything older than `0.1.2` won't work.
+
 
 ## Developing
 
